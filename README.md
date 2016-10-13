@@ -5,7 +5,8 @@
 - [Introduction](#introduction)
   - [Contributing](#contributing)
   - [Issues](#issues)
-- [Getting started](#getting-started)
+  - [Getting started](#getting-started)
+  - [Fork Changes Made by Klarrio](#fork-changes-made-by-klarrio)
   - [Installation](#installation)
   - [Quickstart](#quickstart)
   - [Persistence](#persistence)
@@ -53,6 +54,11 @@ If the above recommendations do not help then [report your issue](../../issues/n
 - Please state if you are using [Boot2Docker](http://www.boot2docker.io), [VirtualBox](https://www.virtualbox.org), etc.
 
 # Getting started
+
+# Fork Changes Made by Klarrio
+
+Removed the PG_RUNTIME volume from the VOLUME parameter in the Docker file.
+When using Docker in combination with Rex-Ray all volumes that are listed in the Docker file VOLUME parameter should be mapped to an external storrage. This is a fast option since there is a sollution with using the new Docker Swarm Mode with SwarmKit in 1.12.1. Docker has implemented the docker service feature which does volume drivers on a per-volume basis. docker service create --replicas 1 --name pg -e POSTGRES_PASSWORD=mysecretpassword --mount type=volume,target=/var/lib/postgresql/data,source=pg_data,volume-driver=rexray postgres
 
 ## Installation
 
